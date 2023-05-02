@@ -19,19 +19,10 @@ local Main = Window:MakeTab({
 })
 
 
-local Teleportin = Window:MakeTab({
-	Name = "Teleportin",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-
-
-
 --Main Buttons 
 
 Main:AddButton({
-	Name = "Teleport 10 studs infront of you",
+	Name = "Teleport 10 studs infront of you (when you press G)",
 	Callback = function()
       		local player = game:GetService("Players").LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
