@@ -1,0 +1,67 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Pokemon Brick Bronze Script", HidePremium = false, IntroText = "Worrcc's Hub", SaveConfig = true, ConfigFolder = "OrionTest"})
+
+OrionLib:MakeNotification({
+	Name = "Welcome To Worrc's hub",
+	Content = "This is a free roblox script for multiple games that I just do as a hobby",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+
+
+-- Tabs
+
+local Main = Window:MakeTab({
+	Name = "Movement",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Teleportin = Window:MakeTab({
+	Name = "Teleportin",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+
+
+--Main Buttons 
+
+Main:AddButton({
+	Name = "Teleport 10 studs infront of you",
+	Callback = function()
+      		local player = game:GetService("Players").LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+-- Distance to teleport the player in studs
+local distance = 10
+
+-- Function to teleport the player in front of their current position, checking for obstacles
+local function teleportPlayer()
+    local rootPart = character:WaitForChild("HumanoidRootPart")
+    local newPosition = rootPart.CFrame * CFrame.new(0, 0, -distance)
+
+    -- Check for obstacles
+    local ray = Ray.new(rootPart.Position, (newPosition.Position - rootPart.Position).Unit * distance)
+    local hitPart, hitPosition = workspace:FindPartOnRayWithIgnoreList(ray, {character})
+    if hitPart then
+        newPosition = CFrame.new(hitPosition + hitPart.CFrame.LookVector * 2)
+    end
+
+    rootPart.CFrame = newPosition
+end
+
+-- Bind the teleport function to the "G" key
+game:GetService("UserInputService").InputBegan:Connect(function(input, processed)
+    if not processed and input.KeyCode == Enum.KeyCode.G then
+        teleportPlayer()
+    end
+end)
+  	end    
+})
+
+OrionLib:Init()
