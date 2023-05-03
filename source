@@ -22,7 +22,7 @@ local Main = Window:MakeTab({
 --Main Buttons 
 
 Main:AddButton({
-	Name = "Teleport 30 studs infront of you (when you press G)",
+	Name = "Teleport 15 studs infront of you (when you press G)",
 	Callback = function()
       		local player = game:GetService("Players").LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
