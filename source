@@ -29,7 +29,7 @@ local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
 
 -- Distance to teleport the player in studs
-local distance = 30
+local distance = 15
 
 -- Function to teleport the player in front of their current position, checking for obstacles
 local function teleportPlayer()
